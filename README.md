@@ -1,1 +1,1 @@
-WC-DOS
+# DOS Theme Components

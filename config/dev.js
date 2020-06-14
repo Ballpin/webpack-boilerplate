@@ -1,7 +1,9 @@
-let HtmlWebpackPlugin = require('html-webpack-plugin');
+import {rootPath} from './paths';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 function buildConfig(configDirs) {
   return {
+    context: rootPath,
     entry: `${configDirs.APP_DIR}/index.ts`,
     mode: 'development',
     output: {
@@ -19,6 +21,29 @@ function buildConfig(configDirs) {
           test: /\.css$/,
           use: [ 'style-loader', 'css-loader' ]
         },
+        // {
+        //   test: /\.pcss$/,
+        //   use: [
+        //     'to-string-loader',
+        //     // 'style-loader',
+        //     { loader: 'css-loader', options: { importLoaders: 1 } },
+        //     { loader: 'postcss-loader', options: {
+        //         ident: 'postcss',
+        //         plugins: () => [
+        //           postcssImport({
+        //             root: rootPath,
+        //             path: ['node_modules/tailwindcss', 'src/lit-element'],
+        //           }),
+        //           tailwindcss('./tailwindcss/tailwind.config.js'),
+        //           postcssPresetEnv({
+        //             stage: 0,
+        //             browsers: 'last 2 versions'
+        //           }),
+        //         ]
+        //       }
+        //     },
+        //   ]
+        // },
         {
           test: /\.jsx$/,
           use : {
