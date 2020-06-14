@@ -1,0 +1,42 @@
+{
+  "name": "wc-dos",
+  "version": "1.0.0",
+  "description": "wc-dos",
+  "scripts": {
+    "build:prod": "webpack -p --env=prod",
+    "build:dev": "webpack -d --env=dev",
+    "serve": "webpack-dev-server -d --open"
+  },
+  "main": "dist/bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ballpin/wc-dos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ballpin/wc-dos/issues"
+  },
+  "homepage": "https://github.com/Ballpin/wc-dos#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
+    "@webpack-cli/init": "^0.3.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "quokka": {
+    "babel": true,
+    "env": {
+      "params": {
+        "env": "NODE_PATH=."
+      }
+    }
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.10.2"
+  }
+}
