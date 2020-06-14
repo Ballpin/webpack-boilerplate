@@ -1,6 +1,7 @@
 import path from 'path';
-const BUILD_DIR = path.resolve(__dirname, './dist');
-const APP_DIR = path.resolve(__dirname, './src');
+import {rootPath} from './paths';
+const BUILD_DIR = path.resolve(rootPath, 'dist');
+const APP_DIR = path.join(rootPath, 'src');
 
 const configDirs = {
   BUILD_DIR: BUILD_DIR,
@@ -9,7 +10,7 @@ const configDirs = {
 
 function buildConfig(env) {
   if (env === 'dev' || env === 'prod') {
-    return import(`./config/${env}.js`).then(({default: module}) => module(configDirs))
+    return import(`./${env}.js`).then(({default: module}) => module(configDirs))
   } else {
     console.log("Wrong webpack build parameter. Possible choices: 'dev' or 'prod'.")
   }
