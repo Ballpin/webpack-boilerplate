@@ -9,6 +9,7 @@ function buildConfig(configDirs) {
   return {
     context: rootPath,
     entry: {
+      tailwind: [`${configDirs.APP_DIR}/styles/tailwind.pcss`],
       main: [`${configDirs.APP_DIR}/index.ts`],
     },
     mode: 'development',

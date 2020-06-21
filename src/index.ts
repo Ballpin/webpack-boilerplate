@@ -1,4 +1,3 @@
-import './styles/tailwind.pcss'
 export const helloWorld = 'Hello World';
 
 const div = document.createElement('div');
