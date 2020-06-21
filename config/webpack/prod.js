@@ -4,25 +4,15 @@ import tailwindcss from 'tailwindcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import {CleanWebpackPlugin} from 'clean-webpack-plugin';
-import path from 'path';
 import {rootPath} from './paths';
-
-function recursiveIssuer(m) {
-  if (m.issuer) {
-    return recursiveIssuer(m.issuer);
-  } else if (m.name) {
-    return m.name;
-  } else {
-    return false;
-  }
-}
+import {recursiveIssuer} from './utils';
 
 function buildConfig(configDirs) {
   return {
     context: rootPath,
     entry: {
+      tailwind: [`${configDirs.APP_DIR}/styles/tailwind.pcss`],
       main: [`${configDirs.APP_DIR}/index.ts`],
-      tailwind: [`${configDirs.APP_DIR}/styles/tailwind.pcss`]
     },
     optimization: {
       splitChunks: {
@@ -58,6 +48,7 @@ function buildConfig(configDirs) {
           use: [
             'to-string-loader',
             MiniCssExtractPlugin.loader,
+            'style-loader',
             { loader: 'css-loader', options: { importLoaders: 1 } },
             { loader: 'postcss-loader', options: {
                 ident: 'postcss',

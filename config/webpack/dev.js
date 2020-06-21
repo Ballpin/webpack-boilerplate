@@ -3,13 +3,13 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import tailwindcss from 'tailwindcss';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
+import {recursiveIssuer} from './utils';
 
 function buildConfig(configDirs) {
   return {
     context: rootPath,
     entry: {
       main: [`${configDirs.APP_DIR}/index.ts`],
-      tailwind: [`${configDirs.APP_DIR}/styles/tailwind.pcss`]
     },
     mode: 'development',
     optimization: {
@@ -44,6 +44,7 @@ function buildConfig(configDirs) {
           test: /\.pcss$/,
           use: [
             'to-string-loader',
+            'style-loader',
             { loader: 'css-loader', options: { importLoaders: 1 } },
             { loader: 'postcss-loader', options: {
                 ident: 'postcss',
@@ -94,7 +95,10 @@ function buildConfig(configDirs) {
       historyApiFallback: true
     },
     plugins: [
-      new HtmlWebpackPlugin()
+      new HtmlWebpackPlugin({
+        scriptLoading: 'defer',
+        inject: true
+      })
     ]
   };
 }
