@@ -1,7 +1,8 @@
-export default function helloWorld() {
-  console.log('test');
-}
+import './styles/tailwind.pcss'
+export const helloWorld = 'Hello World';
 
-export function MyWorld() {
-  console.log('MyWOrld');
-}
+const div = document.createElement('div');
+div.className = 'container mx-auto';
+div.innerHTML = helloWorld;
+
+document.body.prepend(div);
