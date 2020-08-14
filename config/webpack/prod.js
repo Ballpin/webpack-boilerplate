@@ -27,7 +27,7 @@ function buildConfig(configDirs) {
         },
       },
     },
-    mode: 'development',
+    mode: 'production',
     output: {
       path: configDirs.BUILD_DIR,
       libraryTarget: 'umd',
